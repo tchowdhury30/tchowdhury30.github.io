@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23b3401e'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='17' fill='%23faf6ef' text-anchor='middle'%3ETC%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23e58fa6'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='17' fill='%2317151b' text-anchor='middle'%3ETC%3C/text%3E%3C/svg%3E">
 <style>
   /* ============ tokens ============ */
   :root {
@@ -36,6 +36,7 @@
     --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
     --serif: "Fraunces", Georgia, serif;
     --sans: "Inter", -apple-system, sans-serif;
+    color-scheme: dark;
   }
   /* per-project hues — the Prism idea */
   .feature:nth-of-type(1) { --accent: #e58fa6; --accent-soft: #2b2029; }
@@ -46,22 +47,6 @@
   .proj:nth-of-type(4) { --accent: #c8a8e8; --accent-soft: #262032; }
   .proj:nth-of-type(5) { --accent: #e58fa6; --accent-soft: #2b2029; }
   .proj:nth-of-type(6) { --accent: #e0bd7a; --accent-soft: #2b2519; }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --paper: #191612;
-      --paper-2: #211d17;
-      --ink: #ece5d8;
-      --ink-2: #b0a795;
-      --ink-3: #857c6b;
-      --rule: #363028;
-      --rule-strong: #4a4236;
-      --accent: #e0603a;
-      --accent-soft: #3a251c;
-      --teal: #4fa8a1;
-      --teal-soft: #1d2f2d;
-      --card: #201c16;
-    }
-  }
 
   /* ============ base ============ */
   * { margin: 0; padding: 0; box-sizing: border-box; }
