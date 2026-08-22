@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tasnim Chowdhury</title>
+<meta name="description" content="Tasnim Chowdhury — Dartmouth CS '27. AI and data products built with a human-centered lens: data infrastructure, applied AI, and real-time graphics.">
+<!-- Not indexed by search engines. Remove this tag (and robots.txt) to let the site rank for her name. -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="googlebot" content="noindex, nofollow">
+<!-- Link preview (works when the URL is shared, independent of indexing) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tasnim Chowdhury — Software Engineer">
+<meta property="og:description" content="Dartmouth CS '27 · incoming SWE at the Oklahoma City Thunder · shipped a governed semantic-layer data product to production at Salesforce. Humanitarian tech, language tech, applied AI, and WebGL.">
+<meta property="og:image" content="assets/og-preview.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23b3401e'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='17' fill='%23faf6ef' text-anchor='middle'%3ETC%3C/text%3E%3C/svg%3E">
+<style>
+  /* ============ tokens ============ */
+  :root {
+    --paper: #17151b;
+    --paper-2: #201d26;
+    --ink: #f4eff2;
+    --ink-2: #c2b7c2;
+    --ink-3: #8f8596;
+    --rule: #2f2a37;
+    --rule-strong: #423b4d;
+    --accent: #e58fa6;
+    --accent-soft: #2b2029;
+    --teal: #6fd6b5;
+    --teal-soft: #1c2b28;
+    --card: #1c1922;
+    --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    --serif: "Fraunces", Georgia, serif;
+    --sans: "Inter", -apple-system, sans-serif;
+  }
+  /* per-project hues — the Prism idea */
+  .feature:nth-of-type(1) { --accent: #e58fa6; --accent-soft: #2b2029; }
+  .feature:nth-of-type(2) { --accent: #e0bd7a; --accent-soft: #2b2519; }
+  .proj:nth-of-type(1) { --accent: #6fd6b5; --accent-soft: #1c2b28; }
+  .proj:nth-of-type(2) { --accent: #8fb4f5; --accent-soft: #1e2432; }
+  .proj:nth-of-type(3) { --accent: #f0a58c; --accent-soft: #2e221e; }
+  .proj:nth-of-type(4) { --accent: #c8a8e8; --accent-soft: #262032; }
+  .proj:nth-of-type(5) { --accent: #e58fa6; --accent-soft: #2b2029; }
+  .proj:nth-of-type(6) { --accent: #e0bd7a; --accent-soft: #2b2519; }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #191612;
+      --paper-2: #211d17;
+      --ink: #ece5d8;
+      --ink-2: #b0a795;
+      --ink-3: #857c6b;
+      --rule: #363028;
+      --rule-strong: #4a4236;
+      --accent: #e0603a;
+      --accent-soft: #3a251c;
+      --teal: #4fa8a1;
+      --teal-soft: #1d2f2d;
+      --card: #201c16;
+    }
+  }
+
+  /* ============ base ============ */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--accent); color: var(--paper); }
+  a { color: inherit; }
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+  section { padding: 88px 0 0; }
+
+  h2.section-title {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(1.7rem, 3.4vw, 2.3rem);
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+  }
+  .section-head {
+    display: flex; align-items: baseline; justify-content: space-between; gap: 16px;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 14px;
+    margin-bottom: 0;
+  }
+  .section-index {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--ink-3);
+    letter-spacing: 0.08em;
+  }
+  .kicker {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  /* ============ nav ============ */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 24px; max-width: 1060px; margin: 0 auto;
+  }
+  .nav-name { font-family: var(--serif); font-weight: 600; font-size: 1.05rem; text-decoration: none; }
+  .nav-name .dot { color: var(--accent); }
+  .nav-links { display: flex; gap: 26px; }
+  .nav-links a {
+    font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.06em;
+    text-decoration: none; color: var(--ink-2); transition: color 0.15s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  @media (max-width: 620px) { .nav-links a:nth-child(n+4) { display: none; } }
+
+  /* ============ hero ============ */
+  header.hero { padding: 96px 0 72px; border-bottom: 1px solid var(--rule); position: relative; overflow: hidden; }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 48px; align-items: center; }
+  @media (max-width: 800px) { .hero-grid { grid-template-columns: 1fr; } .hero-art { display: none; } }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(2.6rem, 7vw, 4.4rem);
+    line-height: 1.04;
+    letter-spacing: -0.02em;
+    margin: 18px 0 22px;
+  }
+  h1 em { font-style: italic; color: var(--accent); }
+  .hero-sub {
+    font-size: clamp(1.02rem, 2vw, 1.18rem);
+    color: var(--ink-2);
+    max-width: 56ch;
+    margin-bottom: 28px;
+  }
+  .hero-sub strong { color: var(--ink); font-weight: 600; }
+  .tags { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 34px; }
+  .tag {
+    font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.04em;
+    padding: 6px 14px; border-radius: 999px;
+    border: 1px solid var(--rule-strong); color: var(--ink-2);
+    background: var(--card);
+  }
+  .tag.hot { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+  /* hero credibility rail */
+  .cred-rail {
+    display: flex; flex-wrap: wrap; gap: 0; margin: 0 0 30px;
+    border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+  }
+  .cred-rail > div {
+    flex: 1 1 190px; padding: 14px 20px 15px;
+    border-left: 1px solid var(--rule);
+  }
+  .cred-rail > div:first-child { border-left: none; padding-left: 0; }
+  .cred-rail dt {
+    font-family: var(--mono); font-size: 0.63rem; letter-spacing: 0.13em;
+    text-transform: uppercase; color: var(--ink-3); margin-bottom: 6px;
+  }
+  .cred-rail dd { margin: 0; line-height: 1.35; }
+  .cred-rail dd b {
+    display: block; font-family: var(--display); font-size: 1.06rem;
+    font-weight: 500; color: var(--ink); letter-spacing: -0.01em;
+  }
+  .cred-rail dd span {
+    display: block; font-size: 0.79rem; color: var(--ink-2); margin-top: 2px;
+  }
+  @media (max-width: 620px) {
+    .cred-rail > div { flex-basis: 100%; border-left: none; padding: 12px 0; border-top: 1px solid var(--rule); }
+    .cred-rail > div:first-child { border-top: none; }
+  }
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--mono); font-size: 0.82rem; letter-spacing: 0.03em;
+    text-decoration: none; padding: 11px 20px; border-radius: 8px;
+    transition: transform 0.15s, background 0.15s, color 0.15s;
+  }
+  .btn-primary { background: var(--ink); color: var(--paper); }
+  .btn-primary:hover { background: var(--accent); transform: translateY(-1px); }
+  .btn-ghost { border: 1px solid var(--rule-strong); color: var(--ink-2); }
+  .btn-ghost:hover { border-color: var(--ink); color: var(--ink); transform: translateY(-1px); }
+
+  /* hero art: layered contour SVG */
+  .hero-art svg { width: 100%; height: auto; display: block; }
+  .hero-art .c1 { stroke: var(--accent); }
+  .hero-art .c2 { stroke: var(--teal); }
+  .hero-art .c3 { stroke: var(--rule-strong); }
+
+  /* ============ ruled list base (editorial) ============ */
+  .ruled { border: 1px solid var(--rule); border-top: none; background: var(--card); }
+  .ruled > * { border-bottom: 1px solid var(--rule); }
+  .ruled > *:last-child { border-bottom: none; }
+
+  /* ============ featured project ============ */
+  .feature {
+    display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: 0; border: 1px solid var(--rule-strong); border-top: none; background: var(--card);
+  }
+  @media (max-width: 800px) { .feature { grid-template-columns: minmax(0, 1fr); } }
+  .feature-body, .feature-visual { min-width: 0; }
+  .feature-body { padding: 40px 40px 36px; }
+  @media (max-width: 620px) { .feature-body { padding: 28px 22px; } }
+  .feature-label {
+    display: inline-block; font-family: var(--mono); font-size: 0.72rem;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    background: var(--accent); color: var(--paper);
+    padding: 4px 10px; border-radius: 4px; margin-bottom: 18px;
+  }
+  .feature h3 {
+    font-family: var(--serif); font-weight: 600;
+    font-size: clamp(1.6rem, 3vw, 2.1rem); line-height: 1.1; margin-bottom: 4px;
+  }
+  .feature .arabic {
+    font-size: 1.35rem; color: var(--ink-3); direction: rtl; display: block; margin-bottom: 16px;
+  }
+  .feature p { color: var(--ink-2); margin-bottom: 14px; max-width: 58ch; }
+  .feature p strong { color: var(--ink); }
+  .stat-row { display: flex; flex-wrap: wrap; gap: 0; border: 1px solid var(--rule); margin: 22px 0; }
+  .stat { flex: 1 1 0; min-width: 110px; padding: 14px 16px; border-right: 1px solid var(--rule); }
+  .stat:last-child { border-right: none; }
+  .stat b { display: block; font-family: var(--serif); font-size: 1.5rem; font-weight: 600; line-height: 1.1; }
+  .stat span { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); }
+  .stack { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+  .chip {
+    font-family: var(--mono); font-size: 0.71rem;
+    padding: 4px 10px; border-radius: 4px;
+    background: var(--paper-2); color: var(--ink-2); border: 1px solid var(--rule);
+  }
+  .feature-visual {
+    background: var(--paper-2); border-left: 1px solid var(--rule);
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 40px 34px; gap: 26px; position: relative; overflow: hidden;
+  }
+  @media (max-width: 800px) { .feature-visual { border-left: none; border-top: 1px solid var(--rule); } }
+  .wave { display: flex; align-items: center; gap: 4px; height: 72px; }
+  .wave i {
+    flex: 1; background: var(--accent); border-radius: 2px; min-width: 3px;
+    height: calc(var(--h) * 1%);
+    opacity: 0.85;
+    animation: pulse 2.6s ease-in-out infinite;
+    animation-delay: calc(var(--d) * 1s);
+  }
+  .wave.teal i { background: var(--teal); }
+  @keyframes pulse { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(0.55); } }
+  @media (prefers-reduced-motion: reduce) {
+    .wave i { animation: none; }
+    html { scroll-behavior: auto; }
+  }
+  .wave-caption { font-family: var(--mono); font-size: 0.7rem; color: var(--ink-3); letter-spacing: 0.06em; }
+  .speakers { display: flex; gap: 8px; margin-top: 4px; }
+  .speaker {
+    width: 34px; height: 34px; border-radius: 999px;
+    display: grid; place-items: center;
+    font-family: var(--mono); font-size: 0.7rem; font-weight: 500;
+    border: 1px solid var(--rule-strong); color: var(--ink-2); background: var(--card);
+  }
+
+  /* ============ project cards ============ */
+  .proj { display: grid; grid-template-columns: 88px minmax(0, 1fr) 260px; gap: 28px; padding: 34px 36px; }
+  @media (max-width: 800px) { .proj { grid-template-columns: 56px minmax(0,1fr); } .proj-side { grid-column: 2; } }
+  @media (max-width: 520px) { .proj { grid-template-columns: minmax(0, 1fr); padding: 26px 20px; } .proj-side { grid-column: 1; } }
+  .proj > * { min-width: 0; }
+  /* a figure promoted to span the card's full width */
+  .proj-wide { grid-column: 2 / -1; margin: 4px 0 0; }
+  @media (max-width: 800px) { .proj-wide { grid-column: 2; } }
+  @media (max-width: 520px) { .proj-wide { grid-column: 1; } }
+  .proj-num {
+    font-family: var(--serif); font-size: 1.9rem; font-weight: 400;
+    color: var(--ink-3); font-variant-numeric: tabular-nums; line-height: 1;
+    padding-top: 4px;
+  }
+  .proj h3 { font-family: var(--serif); font-weight: 600; font-size: 1.32rem; line-height: 1.2; margin-bottom: 4px; }
+  .proj .proj-role { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+  .proj p { color: var(--ink-2); font-size: 0.95rem; max-width: 60ch; margin-bottom: 10px; }
+  .proj p strong { color: var(--ink); }
+  .proj-side { display: flex; flex-direction: column; gap: 14px; }
+  .proj-facts { list-style: none; border-left: 2px solid var(--rule-strong); padding-left: 14px; display: flex; flex-direction: column; gap: 8px; }
+  .proj-facts li { font-size: 0.85rem; color: var(--ink-2); }
+  .proj-facts li b { color: var(--ink); font-weight: 600; }
+
+  /* ============ project imagery ============ */
+  .shot { margin: 20px 0 4px; max-width: 560px; }
+  .shot-frame {
+    border: 1px solid var(--rule-strong); border-radius: 10px; overflow: hidden;
+    background: #fff; box-shadow: 0 1px 3px rgba(33, 29, 24, 0.07);
+  }
+  .shot-bar {
+    display: flex; gap: 6px; padding: 9px 12px;
+    border-bottom: 1px solid var(--rule); background: var(--paper-2);
+  }
+  .shot-bar i { width: 9px; height: 9px; border-radius: 999px; background: var(--rule-strong); }
+  .shot img { display: block; width: 100%; height: auto; }
+  .shot figcaption, .bear-caption {
+    font-family: var(--mono); font-size: 0.7rem; color: var(--ink-3);
+    letter-spacing: 0.04em; margin-top: 9px; line-height: 1.5;
+  }
+  .bear-strip { display: flex; gap: 10px; flex-wrap: wrap; }
+  .bear-tile {
+    width: 76px; height: 94px; flex: none;
+    border: 1px solid var(--rule-strong); border-radius: 12px;
+    background-color: #fff;
+    background-size: 250% auto;
+    background-position: 11% 24%;
+    background-repeat: no-repeat;
+  }
+  /* ============ code blocks ============ */
+  .codeblock {
+    border: 1px solid var(--rule-strong); border-radius: 10px; overflow: hidden;
+    background: var(--card); margin: 20px 0 4px; max-width: 640px;
+    box-shadow: 0 1px 3px rgba(33, 29, 24, 0.06);
+  }
+  .code-bar {
+    display: flex; justify-content: space-between; gap: 12px;
+    font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-3);
+    padding: 8px 14px; border-bottom: 1px solid var(--rule); background: var(--paper-2);
+  }
+  .code-bar b { color: var(--teal); font-weight: 500; }
+  .codeblock pre {
+    margin: 0; padding: 14px 16px; overflow-x: auto;
+    font-family: var(--mono); font-size: 0.74rem; line-height: 1.6;
+    color: var(--ink); background: transparent; tab-size: 2;
+  }
+  .codeblock pre .cm { color: var(--ink-3); }        /* comment */
+  .codeblock pre .kw { color: var(--accent); }       /* keyword */
+  .code-caption {
+    font-family: var(--mono); font-size: 0.7rem; color: var(--ink-3);
+    letter-spacing: 0.04em; margin: 9px 0 0; line-height: 1.5; max-width: 640px;
+  }
+
+  /* ============ heart flagship ============ */
+  .heart-hero { grid-column: 1 / -1; border-bottom: 1px solid var(--rule); background: #08070c; margin: 0; }
+  .heart-hero video, .heart-hero img { display: block; width: 100%; height: auto; max-height: 560px; object-fit: cover; aspect-ratio: 16 / 9; }
+  .heart-hero figcaption {
+    font-family: var(--mono); font-size: 0.7rem; color: var(--ink-3);
+    letter-spacing: 0.04em; line-height: 1.5;
+    padding: 10px 40px 12px; background: var(--paper-2); border-top: 1px solid var(--rule);
+  }
+  @media (max-width: 620px) { .heart-hero figcaption { padding: 10px 22px 12px; } }
+  .feature-visual.heart-side { justify-content: flex-start; gap: 22px; }
+  .heart-side .shot { margin: 0; max-width: none; }
+  .heart-side .codeblock { max-width: none; margin: 0; }
+  .heart-gallery { grid-column: 1 / -1; margin: 0; border-top: 1px solid var(--rule); padding: 22px 40px 24px; }
+  @media (max-width: 620px) { .heart-gallery { padding: 18px 22px 20px; } }
+  .heart-gallery .hg-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  @media (max-width: 700px) { .heart-gallery .hg-grid { grid-template-columns: repeat(2, 1fr); } }
+  .heart-gallery img {
+    display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover;
+    border: 1px solid var(--rule-strong); border-radius: 8px; background: #08070c;
+  }
+  .heart-gallery figcaption {
+    font-family: var(--mono); font-size: 0.7rem; color: var(--ink-3);
+    letter-spacing: 0.04em; margin-top: 10px; line-height: 1.5;
+  }
+
+  /* ============ item-art strip ============ */
+  /* ---- lightbox ---- */
+  .zoomable { cursor: zoom-in; }
+  .zoomable:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .lightbox {
+    position: fixed; inset: 0; z-index: 999;
+    display: none; align-items: center; justify-content: center;
+    background: rgba(18, 16, 14, 0.92); padding: 3vmin;
+  }
+  .lightbox.is-open { display: flex; }
+  .lb-fig { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 14px; max-width: 100%; }
+  .lb-fig img {
+    max-width: min(1400px, 94vw); max-height: 82vh;
+    width: auto; height: auto; object-fit: contain;
+    border-radius: 8px; background: #fff; cursor: zoom-out;
+  }
+  .lb-fig figcaption {
+    font-family: var(--mono); font-size: 0.72rem; line-height: 1.6;
+    color: rgba(250, 246, 239, 0.72); max-width: 74ch; text-align: center;
+  }
+  .lb-close {
+    position: absolute; top: 18px; right: 22px;
+    width: 42px; height: 42px; border-radius: 999px; cursor: pointer;
+    border: 1px solid rgba(250, 246, 239, 0.35); background: transparent;
+    color: #faf6ef; font-size: 1.5rem; line-height: 1;
+  }
+  .lb-close:hover { background: rgba(250, 246, 239, 0.12); }
+
+  /* phone screenshot row */
+  .phones { margin: 22px 0 6px; }
+  .phone-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  @media (max-width: 620px) { .phone-row { grid-template-columns: repeat(2, 1fr); } }
+  .phone-row img {
+    display: block; width: 100%; height: auto;
+    border: 1px solid var(--rule-strong); border-radius: 16px; background: #fff;
+  }
+  /* full-width sprite sheet */
+  .sheet-img { display: block; width: 100%; height: auto; }
+  .item-strip { display: flex; flex-wrap: wrap; gap: 8px; }
+  .item-tile {
+    width: 58px; height: 58px; flex: none; padding: 7px;
+    border: 1px solid var(--rule); border-radius: 10px; background: var(--paper-2);
+  }
+  .item-tile img { display: block; width: 100%; height: 100%; object-fit: contain; }
+
+  /* ============ toothviz pipeline (inline SVG) ============ */
+  .pipe-fig { margin: 22px 0 4px; }
+  /* toothviz real captures */
+  .tv-fig { margin: 20px 0 0; }
+  .tv-fig img, .tv-grid img {
+    display: block; width: 100%; height: auto;
+    border: 1px solid var(--rule-strong); border-radius: 10px; background: #222c37;
+  }
+  .tv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; }
+  @media (max-width: 640px) { .tv-grid { grid-template-columns: repeat(2, 1fr); } }
+  .pipe { display: block; width: 100%; height: auto; }
+  .pipe .panel { fill: var(--paper-2); stroke: var(--rule-strong); stroke-width: 1; }
+  .pipe .plate { fill: #241f19; stroke: var(--rule-strong); stroke-width: 1; }
+  .pipe .ivory { stroke: #e9e1cf; fill: none; }
+  .pipe .ink   { stroke: var(--ink-2); fill: none; }
+  .pipe .faint { stroke: var(--ink-3); fill: none; }
+  .pipe .teal  { stroke: var(--teal); fill: none; }
+  .pipe .terra { fill: var(--accent); stroke: none; }
+  .pipe .strike { stroke: var(--accent); fill: none; }
+  .pipe .doc   { fill: var(--card); stroke: var(--ink-2); }
+  .pipe .mut   { fill: var(--rule-strong); stroke: none; }
+  .pipe .conn  { stroke: var(--rule-strong); stroke-width: 1; fill: none; }
+  .pipe .ah    { fill: var(--accent); stroke: none; }
+  .pipe text   { font-family: var(--mono); fill: var(--ink-2); font-size: 13px; letter-spacing: 0.02em; text-anchor: middle; }
+  .pipe .sub   { fill: var(--ink-3); font-size: 11px; }
+  .pipe .link-v { display: none; }
+  @media (max-width: 600px) {
+    .pipe-fig { max-width: 340px; }
+    .pipe.pipe-js .link-h { display: none; }
+    .pipe.pipe-js .link-v { display: block; }
+    .pipe.pipe-js .st1 { transform: translate(80px, 0); }
+    .pipe.pipe-js .st2 { transform: translate(80px, 170px); }
+    .pipe.pipe-js .st3 { transform: translate(80px, 340px); }
+    .pipe.pipe-js .st4 { transform: translate(80px, 510px); }
+    .pipe.pipe-js .st5 { transform: translate(80px, 680px); }
+  }
+
+  /* ============ experience timeline ============ */
+  .timeline { position: relative; margin-top: 0; }
+  .t-item { display: grid; grid-template-columns: 190px 28px minmax(0, 1fr); gap: 0 18px; padding: 30px 0; border-bottom: 1px solid var(--rule); }
+  .t-item:last-child { border-bottom: none; }
+  @media (max-width: 700px) { .t-item { grid-template-columns: 28px minmax(0,1fr); } .t-when { grid-column: 2; order: -1; margin-bottom: 6px; } }
+  .t-when { font-family: var(--mono); font-size: 0.78rem; color: var(--ink-3); padding-top: 5px; letter-spacing: 0.03em; }
+  .t-marker { position: relative; }
+  .t-marker::before {
+    content: ""; position: absolute; left: 50%; top: 12px; bottom: -42px;
+    width: 1px; background: var(--rule-strong); transform: translateX(-50%);
+  }
+  .t-item:last-child .t-marker::before { bottom: auto; height: 30px; }
+  .t-marker::after {
+    content: ""; position: absolute; left: 50%; top: 8px;
+    width: 9px; height: 9px; border-radius: 999px;
+    background: var(--paper); border: 2px solid var(--accent);
+    transform: translateX(-50%);
+  }
+  @media (max-width: 700px) { .t-marker { display: none; } }
+  .t-body h3 { font-family: var(--serif); font-size: 1.25rem; font-weight: 600; line-height: 1.25; }
+  .t-body .t-role { font-size: 0.9rem; color: var(--teal); font-weight: 500; margin: 2px 0 10px; }
+  .t-body ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+  .t-body li { font-size: 0.93rem; color: var(--ink-2); padding-left: 18px; position: relative; max-width: 68ch; }
+  .t-body li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
+  .t-body li strong { color: var(--ink); }
+  .badge {
+    display: inline-block; font-family: var(--mono); font-size: 0.68rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    border: 1px solid var(--teal); color: var(--teal);
+    padding: 2px 9px; border-radius: 999px; margin-left: 8px; vertical-align: 2px;
+  }
+  .t-lede {
+    font-family: var(--serif); font-style: italic; font-size: 1.04rem;
+    color: var(--ink); margin: 0 0 12px; max-width: 60ch; line-height: 1.5;
+  }
+  .t-lede strong { font-style: normal; }
+  blockquote.pull {
+    border-left: 3px solid var(--accent);
+    margin: 20px 0 4px; padding: 4px 0 4px 20px;
+    font-family: var(--serif); font-style: italic;
+    font-size: 1.18rem; line-height: 1.45; color: var(--ink); max-width: 44ch;
+  }
+  blockquote.pull cite {
+    display: block; font-family: var(--mono); font-style: normal;
+    font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--ink-3); margin-top: 8px;
+  }
+  .principles { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .principles span {
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.05em;
+    color: var(--ink-2); background: var(--paper-2);
+    border: 1px solid var(--rule); border-radius: 999px; padding: 4px 13px;
+  }
+
+  /* ============ skills ============ */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+  .skill-cell { padding: 26px 28px; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .skill-cell h3 { font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+  .skill-cell ul { list-style: none; display: flex; flex-wrap: wrap; gap: 7px; }
+  .skill-cell li {
+    font-size: 0.84rem; color: var(--ink-2);
+    background: var(--paper-2); border: 1px solid var(--rule);
+    padding: 3px 10px; border-radius: 4px;
+  }
+  .edu-line { padding: 22px 28px; display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: baseline; background: var(--paper-2); }
+  .edu-line b { font-family: var(--serif); font-size: 1.05rem; font-weight: 600; }
+  .edu-line span { font-size: 0.88rem; color: var(--ink-2); }
+  .edu-line .gpa { font-family: var(--mono); font-size: 0.78rem; color: var(--ink-3); margin-left: auto; }
+  .coursework {
+    margin: 0; padding: 13px 28px 15px; background: var(--paper-2);
+    border-top: 1px solid var(--rule);
+    font-size: 0.82rem; color: var(--ink-2); line-height: 1.65;
+  }
+  .coursework b { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
+
+  /* ============ contact ============ */
+  .contact { padding: 96px 0 40px; text-align: center; }
+  .contact h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(2rem, 5vw, 3rem); letter-spacing: -0.015em; margin: 14px 0 16px; }
+  .contact h2 em { font-style: italic; color: var(--accent); }
+  .contact p { color: var(--ink-2); max-width: 46ch; margin: 0 auto 32px; }
+  .contact p.availability {
+    font-family: var(--mono); font-size: 0.76rem; line-height: 1.8;
+    letter-spacing: 0.02em; color: var(--ink-3); max-width: 60ch;
+    padding: 12px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+  }
+  .contact p.availability b { color: var(--ink-2); font-weight: 500; }
+  .contact-links { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+
+  footer { border-top: 1px solid var(--rule); margin-top: 72px; }
+  .foot-inner {
+    max-width: 1060px; margin: 0 auto; padding: 22px 24px;
+    display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between;
+    font-family: var(--mono); font-size: 0.72rem; color: var(--ink-3); letter-spacing: 0.04em;
+  }
+  .foot-inner a { color: var(--ink-3); text-decoration: none; }
+  .foot-inner a:hover { color: var(--accent); }
+
+  /* ============ reveal ============ */
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.55s ease, transform 0.55s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-name" href="#top">Tasnim Chowdhury<span class="dot">.</span></a>
+    <div class="nav-links">
+      <a href="#projects">projects</a>
+      <a href="#experience">experience</a>
+      <a href="#skills">skills</a>
+      <a href="#contact">contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="kicker">Dartmouth CS &rsquo;27 &middot; Human-Centered Design minor &middot; New York, NY</span>
+      <h1>I build AI and data products with a <em>human-centered</em> lens.</h1>
+      <p class="hero-sub">
+        From an <strong>offline-first EMR for disaster-relief clinics</strong> to an
+        <strong>Arabic dialect-learning app built on 970 native-speaker recordings</strong> —
+        I care most about software that meets people where they actually are.
+      </p>
+      <div class="tags">
+        <span class="tag hot">humanitarian tech</span>
+        <span class="tag hot">data infrastructure</span>
+        <span class="tag hot">applied AI</span>
+        <span class="tag">WebGL &amp; graphics</span>
+        <span class="tag">cloud &amp; data</span>
+      </div>
+      <dl class="cred-rail" aria-label="At a glance">
+        <div>
+          <dt>Next</dt>
+          <dd><b>OKC Thunder</b> <span>SWE Intern &middot; Sept 2026</span></dd>
+        </div>
+        <div>
+          <dt>Most recently</dt>
+          <dd><b>Salesforce</b> <span>shipped to prod &middot; hackathon winner, 300+ interns</span></dd>
+        </div>
+        <div>
+          <dt>School</dt>
+          <dd><b>Dartmouth &rsquo;27</b> <span>CS &middot; 3.79 GPA</span></dd>
+        </div>
+      </dl>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#projects">See the work &darr;</a>
+        <a class="btn btn-ghost" href="Chowdhury_Tasnim_Resume.pdf" target="_blank" rel="noopener">Résumé</a>
+        <a class="btn btn-ghost" href="https://github.com/tchowdhury30" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn btn-ghost" href="https://linkedin.com/in/tasnimchowdhurynyc" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 300 300" fill="none" stroke-width="1.5">
+        <circle class="c3" cx="150" cy="150" r="140"/>
+        <circle class="c3" cx="150" cy="150" r="112"/>
+        <circle class="c2" cx="150" cy="150" r="84"/>
+        <circle class="c2" cx="150" cy="150" r="58"/>
+        <circle class="c1" cx="150" cy="150" r="34"/>
+        <circle class="c1" cx="150" cy="150" r="12" fill="currentColor" stroke="none" style="color: var(--accent)"/>
+        <path class="c1" d="M150 10 A140 140 0 0 1 290 150" stroke-width="3"/>
+        <path class="c2" d="M150 66 A84 84 0 0 1 234 150" stroke-width="3"/>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ==================== PROJECTS ==================== -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2 class="section-title">Selected projects</h2>
+        <span class="section-index">01 / 04</span>
+      </div>
+
+      <!-- Flagship: Heart -->
+      <article class="feature reveal">
+        <figure class="heart-hero">
+          <video id="heart-montage" data-src="assets/heart/heart-montage.mp4" poster="assets/heart/heart-garden-arch.jpg" autoplay muted loop playsinline preload="none" width="960" height="540" aria-label="Montage of ten WebGL set pieces from Heart: a dolly through an ivy-covered stone archway, a golden peak flythrough, a waterfall valley, open ocean with volumetric god rays, karst mountains with turquoise lakes, the Earth receding into space, an iridescent particle field, an audio-reactive waveform bridge, a magenta particle bloom, and a starfield warp"></video>
+          <figcaption>Ten set pieces from the engine, back to back — a GLTF/DRACO garden dolly, DEM-driven terrain, four particle acts, an audio-reactive waveform. Every frame rendered in real time by ~8,500 lines of vanilla Three.js and custom GLSL. Zero game-engine dependencies.</figcaption>
+        </figure>
+        <div class="feature-body">
+          <span class="feature-label">Flagship &middot; Solo build</span>
+          <h3>Heart</h3>
+          <div class="proj-role" style="margin-bottom:14px">Immersive WebGL narrative &middot; personal cinematic web experience</div>
+          <p>
+            Eight full-screen acts, each its own real-time WebGL scene — procedural
+            particle systems, custom shaders, film scenes, generated terrain — stitched
+            into one continuous, transition-linked journey that <strong>holds up on a
+            phone</strong>. The narrative is personal and stays offline; what&rsquo;s shown
+            here is the engineering.
+          </p>
+          <p>
+            Built on <strong>vanilla Three.js — deliberately not react-three-fiber</strong> —
+            to keep hand-tuned shader and timing work off a reconciler. A central section
+            sequencer mounts exactly <strong>one WebGL context at a time</strong>: each act
+            owns its full lifecycle (context, rAF loop, listeners, audio, geometries,
+            composer) and tears all of it down on unmount — verified zero leaked contexts
+            across the whole run.
+          </p>
+          <p>
+            No two acts are built alike. A <strong>lyric-synced music act</strong> samples
+            its palette from the cover art on screen; a <strong>scroll-driven interactive
+            scrapbook</strong> composites layered paper, pressed flowers and taped
+            polaroids; a particle field <strong>dollies into a DRACO-compressed GLTF
+            landscape</strong>; five depth-map 2.5D parallax scenes each carry their own
+            typographic identity; one config-driven engine generates every terrain scene
+            from real DEM elevation tiles; and four particle acts share a single renderer.
+          </p>
+          <p>
+            Custom GLSL throughout: domain-warped fbm nebulae, HSL-in-shader particle
+            coloring, Fresnel and flat-facet materials, particle-text formed from glyph
+            silhouettes. GSAP + ScrollTrigger paces the run, and act transitions are
+            <strong>synthesized live with the Web Audio API</strong> — no sound asset.
+          </p>
+          <p>
+            Favorite bug: dense additive-blend particles saturated to a pure-white blob.
+            The fix was systematic — <strong>cut density, raise the bloom threshold,
+            and clamp <code style="font-family:var(--mono);font-size:0.85em">gl_PointSize</code></strong>,
+            since perspective point sizing balloons near-camera points into a solid mass.
+            Tuning was &ldquo;measure, don&rsquo;t eyeball&rdquo;: k-means palettes from
+            reference photos, numeric color-grade checks, <code style="font-family:var(--mono);font-size:0.85em">ffmpeg volumedetect</code> for audio levels.
+          </p>
+          <div class="stat-row">
+            <div class="stat"><b>~8,500</b><span>lines of code</span></div>
+            <div class="stat"><b>8</b><span>acts, 8 scenes</span></div>
+            <div class="stat"><b>1</b><span>live WebGL ctx at a time</span></div>
+            <div class="stat"><b>0</b><span>leaked contexts</span></div>
+          </div>
+          <div class="stack">
+            <span class="chip">Next.js 16</span><span class="chip">React 19</span>
+            <span class="chip">Three.js 0.160 (vanilla)</span><span class="chip">GLSL</span>
+            <span class="chip">UnrealBloom</span><span class="chip">GSAP + ScrollTrigger</span>
+            <span class="chip">Web Audio API</span>
+          </div>
+        </div>
+        <div class="feature-visual heart-side">
+          <figure class="shot">
+            <div class="shot-frame" style="background:#08070c">
+              <img src="assets/heart/eclipse.png" alt="Heart — eclipse act: a glowing corona rendered in real-time WebGL" width="900" height="900" loading="lazy">
+            </div>
+            <figcaption>The eclipse act — domain-warped fbm nebula and corona in custom GLSL, tuned UnrealBloom on top.</figcaption>
+          </figure>
+          <figure class="shot">
+            <div class="shot-frame">
+              <img src="assets/heart/terrain-heightmap-web.jpg" alt="Grayscale DEM elevation heightmap tile used to generate 3D terrain" width="640" height="640" loading="lazy">
+            </div>
+            <figcaption>A real DEM heightmap (AWS Terrarium elevation tiles, z14) — sampled, meshed, and shaded to drive the procedural 3D terrain engine; multiple landscapes share one config-driven engine.</figcaption>
+          </figure>
+          <div>
+            <div class="codeblock">
+              <div class="code-bar"><span>particles.vert</span><b>glsl</b></div>
+              <pre><span class="kw">void</span> main(){
+  vTw = pow(0.5+0.5*sin(uTime*uSpeed + aPhase), 3.0);
+  <span class="kw">vec3</span> p = position; p.y += sin(uTime*0.3 + aPhase)*6.0;
+  <span class="kw">vec4</span> mv = modelViewMatrix*vec4(p,1.0);
+  gl_PointSize = aScl * uPix * (300.0/-mv.z) * (0.4+vTw);
+  gl_Position = projectionMatrix*mv;
+}</pre>
+            </div>
+            <p class="code-caption">Point size &prop; 1/&minus;z is also what caused the additive-blend blowout — the fix included clamping it.</p>
+          </div>
+        </div>
+        <figure class="heart-gallery">
+          <div class="hg-grid">
+            <img src="assets/heart/heart-garden-arch.jpg" alt="Ivy-covered stone archway rendered from a DRACO-compressed GLTF scan, camera dollying through" width="1920" height="1080" loading="lazy">
+            <img src="assets/heart/heart-scrapbook.jpg" alt="Scrapbook act detail — layered paper, pressed flowers, torn newsprint and taped polaroids composited in the browser" width="950" height="534" loading="lazy">
+            <img src="assets/heart/heart-music.jpg" alt="Music act — album card on a starfield, background hue sampled from the cover art" width="1000" height="562" loading="lazy">
+            <img src="assets/heart/heart-golden-peak.jpg" alt="Golden-hour mountain peak rendered from DEM elevation data" width="1920" height="1080" loading="lazy">
+            <img src="assets/heart/heart-karst-lakes.jpg" alt="Karst mountains with turquoise lakes, procedurally rendered from the same terrain engine" width="1920" height="1080" loading="lazy">
+            <img src="assets/heart/heart-earth-globe.jpg" alt="The Earth act — the globe receding into space" width="1920" height="1080" loading="lazy">
+            <img src="assets/heart/heart-particle-flower.jpg" alt="Magenta particle bloom — one of four particle acts sharing a single renderer" width="1920" height="1080" loading="lazy">
+            <img src="assets/heart/heart-waveform-closer.jpg" alt="Audio-reactive waveform particle bridge on black" width="1920" height="1080" loading="lazy">
+          </div>
+          <figcaption>One act each, straight from the engine: the GLTF/DRACO garden dolly &middot; the interactive scrapbook &middot; the lyric-synced music act (background hue sampled from the cover art) &middot; two DEM terrain scenes off one config-driven engine &middot; three of the four particle acts, including the audio-reactive waveform.</figcaption>
+        </figure>
+      </article>
+
+      <!-- Featured: Sook Sout -->
+      <article class="feature reveal" style="border-top:none">
+        <div class="feature-body">
+          <span class="feature-label">Featured &middot; Founder</span>
+          <h3>Sook Sout</h3>
+          <span class="arabic" lang="ar">سوق صوت</span>
+          <p>
+            Arabic classes teach Modern Standard Arabic — but nobody <em>speaks</em> it at
+            the dinner table. Sook Sout teaches <strong>spoken dialects</strong> the way they
+            actually sound: every phrase carries real recordings from native speakers, so
+            learners hear the same sentence in four different voices.
+          </p>
+          <p>
+            A Python audio pipeline handles splitting, transcription, and cataloging, with
+            <strong>dialect-integrity rules</strong> baked in — a recording can never be
+            mislabeled across dialects, and the app never passes off one dialect&rsquo;s
+            audio as another&rsquo;s.
+          </p>
+          <div class="codeblock">
+            <div class="code-bar"><span>lib/phrase.ts &middot; dialect integrity</span><b>rule</b></div>
+            <pre><span class="cm">// Egyptian has no recorded entries yet: entryFor() falls back</span>
+<span class="cm">// to Modern Standard Arabic, and the UI shows an explicit</span>
+<span class="cm">// "recordings in production" notice. The app never presents</span>
+<span class="cm">// Jordanian wording or audio as Egyptian.</span></pre>
+          </div>
+          <p class="code-caption">A recording can be missing; it can never be mislabeled.</p>
+          <div class="stat-row">
+            <div class="stat"><b>970</b><span>native recordings</span></div>
+            <div class="stat"><b>153</b><span>phrase corpus</span></div>
+            <div class="stat"><b>4</b><span>native speakers</span></div>
+            <div class="stat"><b>2</b><span>clients: web + mobile</span></div>
+          </div>
+          <figure class="phones">
+            <div class="phone-row">
+              <img src="assets/sooksout/ss-explore.jpg" alt="Sook Sout explore tab — a field phrasebook for Levantine Arabic, index of 7 chapters and 148 phrases" width="369" height="796" loading="lazy">
+              <img src="assets/sooksout/ss-phrases.jpg" alt="Conversation chapter — English prompt, Arabic script, transliteration, and a named native speaker per phrase" width="369" height="796" loading="lazy">
+              <img src="assets/sooksout/ss-settings.jpg" alt="Settings — dialect switcher and the four named Jordanian voices, with the note that every recording is a native speaker and none is synthesized" width="369" height="796" loading="lazy">
+              <img src="assets/sooksout/ss-culture.jpg" alt="Culture tab — photo-led notes such as Levantine coffee traditions" width="369" height="796" loading="lazy">
+            </div>
+            <figcaption>The app itself. Every phrase carries Arabic, transliteration, and a <em>named</em> native voice — Habib, Ghaina, Khalid, Salim. Settings says it plainly: every recording is a native speaker, no synthesis. The culture tab carries the context a phrasebook can&rsquo;t.</figcaption>
+          </figure>
+          <div class="stack">
+            <span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">Vite</span>
+            <span class="chip">Tailwind</span><span class="chip">Expo / React Native</span>
+            <span class="chip">Supabase</span><span class="chip">Python audio pipeline</span><span class="chip">PWA</span>
+          </div>
+        </div>
+        <div class="feature-visual" aria-hidden="true">
+          <div>
+            <div class="wave">
+              <i style="--h:38;--d:0"></i><i style="--h:72;--d:.1"></i><i style="--h:55;--d:.2"></i><i style="--h:90;--d:.3"></i><i style="--h:48;--d:.4"></i><i style="--h:78;--d:.5"></i><i style="--h:30;--d:.6"></i><i style="--h:64;--d:.7"></i><i style="--h:95;--d:.8"></i><i style="--h:42;--d:.9"></i><i style="--h:70;--d:1"></i><i style="--h:52;--d:1.1"></i><i style="--h:84;--d:1.2"></i><i style="--h:36;--d:1.3"></i><i style="--h:60;--d:1.4"></i><i style="--h:26;--d:1.5"></i>
+            </div>
+            <p class="wave-caption">jordanian / levantine — native audio</p>
+          </div>
+          <div>
+            <div class="wave teal">
+              <i style="--h:30;--d:.2"></i><i style="--h:58;--d:.35"></i><i style="--h:44;--d:.5"></i><i style="--h:80;--d:.65"></i><i style="--h:36;--d:.8"></i><i style="--h:66;--d:.95"></i><i style="--h:50;--d:1.1"></i><i style="--h:88;--d:1.25"></i><i style="--h:40;--d:1.4"></i><i style="--h:62;--d:1.55"></i><i style="--h:28;--d:1.7"></i><i style="--h:74;--d:1.85"></i><i style="--h:46;--d:2"></i><i style="--h:56;--d:2.15"></i><i style="--h:34;--d:2.3"></i><i style="--h:68;--d:2.45"></i>
+            </div>
+            <p class="wave-caption">egyptian — recordings in production</p>
+          </div>
+          <div>
+            <div class="speakers">
+              <span class="speaker">Hb</span><span class="speaker">Gh</span><span class="speaker">Hl</span><span class="speaker">Sa</span>
+            </div>
+            <p class="wave-caption" style="margin-top:8px">one phrase, four voices</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Other projects, ruled editorial list -->
+      <div class="ruled" style="border-top: none;">
+
+        <article class="proj reveal">
+          <div class="proj-num">03</div>
+          <div>
+            <h3>Connected Teddy-Bear Workshop Platform</h3>
+            <div class="proj-role">Client work &middot; funded product &middot; sole developer</div>
+            <p>
+              For a teddy-bear workshop business: customers build a physical bear in-store,
+              receive a unique character code, and redeem it in a companion app where their
+              exact bear — type, color, clothing, accessories — comes to life in a
+              <strong>top-down 2D life sim built in Unity</strong>.
+            </p>
+            <p>
+              The sim has grown well past dress-up. Bears have <strong>needs, skills and a
+              personality</strong>; you farm crops through real growth stages, cook what you
+              harvest, craft from gathered materials, keep bees, dye clothing, train at
+              sports, and go to school — with a world map, animal vendors, and a content
+              graph that ties every seed to a dish and every material to a recipe.
+            </p>
+            <p>
+              I own the whole stack for a <strong>confidential European client</strong>: the
+              Unity client, a Node/Express API over Supabase/PostgreSQL, and a React admin
+              panel for store staff. The economy layer is built defensively — a
+              <strong>coin ledger with earned/purchased separation</strong> (spends debit
+              earned first, so the purchased balance reads as unspent real-money liability),
+              a <strong>DB-trigger-enforced order state machine</strong> (physical merchandise
+              ships on the strength of it, so the UI doesn&rsquo;t get a vote),
+              <strong>idempotent starter-bear redemption</strong> (every account plays
+              immediately; redeeming a real code rewrites the same row, and a second,
+              different code is refused), and an <strong>Apple 3.1.1-compliant split</strong>
+              — digital items are coin-priced, physical goods are card checkout only, never
+              IAP currency.
+            </p>
+            <div class="codeblock">
+              <div class="code-bar"><span>supabase/migrations &middot; character-code namespace</span><b>sql</b></div>
+              <pre><span class="cm">-- Real codes match ^[A-Z0-9]{2}-[A-Z0-9]{4}-[A-Z0-9]{4}$;</span>
+<span class="cm">-- starter codes begin with a lowercase 's'. Every path</span>
+<span class="cm">-- uppercases + trims before insert or lookup, so a real code</span>
+<span class="cm">-- cannot be spelled into the starter namespace.</span>
+<span class="kw">CHECK</span> (...)                    <span class="cm">-- DB enforces the partition</span>
+is_starter boolean <span class="kw">GENERATED</span>   <span class="cm">-- derived from the code; can't drift</span>
+<span class="kw">REVOKE EXECUTE</span> ... <span class="kw">FROM</span> anon, authenticated;
+<span class="cm">-- money-moving RPCs are SECURITY DEFINER, service_role only</span></pre>
+            </div>
+            <p class="code-caption">The starter namespace is a hard partition, not a convention — enforced in the schema, not in app code.</p>
+          </div>
+          <div class="proj-side">
+            <div>
+              <div class="bear-strip">
+                <div class="bear-tile" role="img" aria-label="Brown teddy-bear character, front pose" style="background-image:url('assets/brown-clothed.PNG')"></div>
+                <div class="bear-tile" role="img" aria-label="Cream teddy-bear character, front pose" style="background-image:url('assets/cream-clothed.PNG')"></div>
+                <div class="bear-tile" role="img" aria-label="White teddy-bear character, front pose" style="background-image:url('assets/white-clothed.PNG')"></div>
+              </div>
+              <p class="bear-caption">The three bear types. Character sheets by the project&rsquo;s designer; app, API, and admin panel by Tasnim.</p>
+            </div>
+            <ul class="proj-facts">
+              <li><b>Physical &rarr; digital:</b> character codes link a real bear to its in-app twin</li>
+              <li><b>Unity 2D</b> life sim: needs, farming, cooking, crafting, beekeeping, training, school</li>
+              <li><b>148 sprites</b> across crops, food, tools, furniture, props and UI</li>
+              <li><b>Shipped demo</b> proved the link; now a funded build with a hired designer</li>
+            </ul>
+            <div class="stack">
+              <span class="chip">Unity 2D</span><span class="chip">Node / Express</span>
+              <span class="chip">Supabase</span><span class="chip">PostgreSQL</span><span class="chip">React</span>
+            </div>
+          </div>
+          <figure class="tv-fig proj-wide">
+            <img class="sheet-img" src="assets/bear-items/bear-item-sheet.png" alt="Bear item sprites: carrot seed packet, sprout, growing carrot, ripe carrot, roast carrots, hoe, watering can, shears, axe, basket, honey, cotton, planks, charcoal, veggie stew, bread" width="1400" height="350" loading="lazy">
+            <figcaption class="bear-caption">One content chain, end to end: seed &rarr; sprout &rarr; growing &rarr; ripe &rarr; cooked dish — plus the tools and materials that feed crafting. Part of a <b>148-sprite</b> library across crops, food, tools, materials, furniture, props, toys and UI.</figcaption>
+          </figure>
+        </article>
+
+        <article class="proj reveal">
+          <div class="proj-num">04</div>
+          <div>
+            <h3>Dental X-Ray &rarr; 3D Model Pipeline</h3>
+            <div class="proj-role">Applied AI &middot; medical imaging</div>
+            <p>
+              Turns a flat panoramic dental X-ray into an interactive 3D mouth. A
+              <strong>SAM2-based auto-segmentation pipeline</strong> detects all 28 teeth on
+              real panoramic X-rays at &gt;90% IoU, then lofts anatomically accurate 3D
+              meshes to each patient&rsquo;s tooth contours.
+            </p>
+            <p>
+              The full-mouth <strong>Three.js viewer</strong> shows cavity markers and a
+              before/after treatment toggle. A DICOM ingestion pipeline de-identifies PHI
+              per <strong>DICOM PS3.15</strong>, and the whole thing is covered by 45
+              automated tests.
+            </p>
+            <figure class="pipe-fig">
+              <svg id="tooth-pipe" class="pipe" viewBox="0 0 860 144" role="img" aria-labelledby="tpT tpD">
+                <title id="tpT">ToothViz pipeline, end to end</title>
+                <desc id="tpD">Five stages: a panoramic X-ray plate is ingested as DICOM; SAM2 segments all 28 teeth at over 90 percent IoU; protected health information is de-identified per DICOM PS3.15; patient-specific tooth meshes are lofted from the 2D contours; and the result renders in a Three.js viewer with cavity markers and a before-and-after toggle.</desc>
+                <defs>
+                  <marker id="tp-ah" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+                    <path d="M0 0 L8 4 L0 8 Z" class="ah"/>
+                  </marker>
+                </defs>
+                <!-- stage 1: panoramic X-ray plate -->
+                <g class="st1" transform="translate(2,0)">
+                  <rect class="plate" x="8" y="6" width="134" height="84" rx="10"/>
+                  <path class="ivory" stroke-width="1.8" opacity="0.85" d="M32 44 Q75 26 118 44"/>
+                  <path class="ivory" stroke-width="1.8" opacity="0.55" d="M32 58 Q75 76 118 58"/>
+                  <g class="ivory" stroke-width="1.5" opacity="0.45">
+                    <line x1="42" y1="42" x2="42" y2="58"/><line x1="53" y1="39" x2="53" y2="61"/>
+                    <line x1="64" y1="37" x2="64" y2="63"/><line x1="75" y1="36" x2="75" y2="64"/>
+                    <line x1="86" y1="37" x2="86" y2="63"/><line x1="97" y1="39" x2="97" y2="61"/>
+                    <line x1="108" y1="42" x2="108" y2="58"/>
+                  </g>
+                  <text x="75" y="114">panoramic X-ray</text>
+                  <text x="75" y="130" class="sub">DICOM ingest</text>
+                </g>
+                <!-- stage 2: SAM2 segmentation -->
+                <g class="st2" transform="translate(178,0)">
+                  <rect class="plate" x="8" y="6" width="134" height="84" rx="10"/>
+                  <path class="ivory" stroke-width="1.5" opacity="0.3" d="M32 44 Q75 26 118 44"/>
+                  <path class="ivory" stroke-width="1.5" opacity="0.25" d="M32 58 Q75 76 118 58"/>
+                  <g class="teal" stroke-width="1.8">
+                    <rect x="34" y="30" width="13" height="16" rx="3"/>
+                    <rect x="51" y="30" width="13" height="16" rx="3"/>
+                    <rect x="85" y="30" width="13" height="16" rx="3"/>
+                    <rect x="102" y="30" width="13" height="16" rx="3"/>
+                    <rect x="42" y="53" width="13" height="16" rx="3"/>
+                    <rect x="59" y="53" width="13" height="16" rx="3"/>
+                    <rect x="93" y="53" width="13" height="16" rx="3"/>
+                  </g>
+                  <rect class="terra" x="68" y="30" width="13" height="16" rx="3"/>
+                  <rect class="terra" x="76" y="53" width="13" height="16" rx="3"/>
+                  <text x="75" y="114">SAM2 segment</text>
+                  <text x="75" y="130" class="sub">28/28 &middot; &gt;90% IoU</text>
+                </g>
+                <!-- stage 3: PHI de-identification -->
+                <g class="st3" transform="translate(354,0)">
+                  <rect class="panel" x="8" y="6" width="134" height="84" rx="10"/>
+                  <rect class="doc" stroke-width="1.4" x="53" y="15" width="44" height="58" rx="3"/>
+                  <path class="faint" stroke-width="1.2" d="M85 15 L97 27"/>
+                  <g class="faint" stroke-width="1.5">
+                    <line x1="60" y1="31" x2="90" y2="31"/>
+                    <line x1="60" y1="41" x2="90" y2="41"/>
+                    <line x1="60" y1="51" x2="90" y2="51"/>
+                    <line x1="60" y1="61" x2="78" y2="61"/>
+                  </g>
+                  <line class="strike" stroke-width="2" x1="56" y1="41" x2="94" y2="41"/>
+                  <rect class="teal" stroke-width="1.6" x="88" y="61" width="20" height="13" rx="4"/>
+                  <circle class="teal" stroke-width="1.4" cx="93" cy="67.5" r="1.7"/>
+                  <text x="75" y="114">PS3.15 de-identify</text>
+                  <text x="75" y="130" class="sub">PHI removed</text>
+                </g>
+                <!-- stage 4: mesh lofting -->
+                <g class="st4" transform="translate(530,0)">
+                  <rect class="panel" x="8" y="6" width="134" height="84" rx="10"/>
+                  <g class="teal" stroke-width="1.7">
+                    <ellipse cx="75" cy="27" rx="30" ry="7.5"/>
+                    <ellipse cx="75" cy="42" rx="26" ry="7"/>
+                    <ellipse cx="75" cy="56" rx="18" ry="6"/>
+                    <ellipse cx="75" cy="68" rx="9" ry="4.5"/>
+                  </g>
+                  <path class="faint" stroke-width="1.3" d="M45 27 C47 46 62 61 66 68"/>
+                  <path class="faint" stroke-width="1.3" d="M105 27 C103 46 88 61 84 68"/>
+                  <text x="75" y="114">mesh lofting</text>
+                  <text x="75" y="130" class="sub">2D contours &#8594; 3D</text>
+                </g>
+                <!-- stage 5: Three.js viewer -->
+                <g class="st5" transform="translate(706,0)">
+                  <rect class="panel" x="8" y="6" width="134" height="84" rx="10"/>
+                  <line class="conn" x1="9" y1="22" x2="141" y2="22"/>
+                  <circle class="mut" cx="20" cy="14" r="2.2"/>
+                  <circle class="mut" cx="29" cy="14" r="2.2"/>
+                  <circle class="mut" cx="38" cy="14" r="2.2"/>
+                  <path class="ink" stroke-width="1.8" d="M40 40 C40 72 110 72 110 40"/>
+                  <g class="faint" stroke-width="1.3">
+                    <line x1="44" y1="52" x2="50" y2="47"/>
+                    <line x1="57" y1="62" x2="61" y2="56"/>
+                    <line x1="93" y1="62" x2="89" y2="56"/>
+                    <line x1="106" y1="52" x2="100" y2="47"/>
+                  </g>
+                  <circle class="terra" cx="46" cy="53" r="3.5"/>
+                  <circle class="terra" cx="75" cy="64" r="3.5"/>
+                  <circle class="terra" cx="104" cy="53" r="3.5"/>
+                  <text x="75" y="114">Three.js viewer</text>
+                  <text x="75" y="130" class="sub">before/after toggle</text>
+                </g>
+                <g class="link-h">
+                  <line class="conn" x1="150" y1="48" x2="180" y2="48" marker-end="url(#tp-ah)"/>
+                  <line class="conn" x1="326" y1="48" x2="356" y2="48" marker-end="url(#tp-ah)"/>
+                  <line class="conn" x1="502" y1="48" x2="532" y2="48" marker-end="url(#tp-ah)"/>
+                  <line class="conn" x1="678" y1="48" x2="708" y2="48" marker-end="url(#tp-ah)"/>
+                </g>
+                <g class="link-v">
+                  <line class="conn" x1="155" y1="138" x2="155" y2="164" marker-end="url(#tp-ah)"/>
+                  <line class="conn" x1="155" y1="308" x2="155" y2="334" marker-end="url(#tp-ah)"/>
+                  <line class="conn" x1="155" y1="478" x2="155" y2="504" marker-end="url(#tp-ah)"/>
+                  <line class="conn" x1="155" y1="648" x2="155" y2="674" marker-end="url(#tp-ah)"/>
+                </g>
+              </svg>
+              <figcaption class="bear-caption">The pipeline, end to end — every stage covered by 45 automated tests.</figcaption>
+            </figure>
+            <figure class="tv-fig">
+              <img src="assets/toothviz/tv-demo.gif" alt="The ToothViz viewer orbiting a patient's 3D arch, then toggling from planned treatment to treatment complete" width="1456" height="831" loading="lazy">
+              <figcaption class="bear-caption">The viewer itself — orbiting one patient&rsquo;s reconstructed arch, then toggling to the after-treatment state. Red marks planned treatment, green marks existing work found elsewhere in the chart.</figcaption>
+            </figure>
+            <figure class="tv-fig">
+              <div class="tv-grid">
+                <img src="assets/toothviz/tv-arch-before.jpg" alt="Full arch with six findings to address, marked in red" width="1456" height="831" loading="lazy">
+                <img src="assets/toothviz/tv-arch-after.jpg" alt="The same arch after treatment, findings resolved in teal" width="1456" height="831" loading="lazy">
+                <img src="assets/toothviz/tv-tooth-mesh.jpg" alt="A single lofted tooth mesh — tooth 29, second premolar, segmented at 0.987 IoU" width="1456" height="831" loading="lazy">
+              </div>
+              <figcaption class="bear-caption">Current state &middot; after treatment &middot; one lofted mesh (tooth 29, segmented at 0.987 IoU). Every tooth is built from that patient&rsquo;s own contours, not a template.</figcaption>
+            </figure>
+          </div>
+          <div class="proj-side">
+            <figure class="tv-fig" style="margin:0 0 16px">
+              <img src="assets/toothviz/tv-findings-review.jpg" alt="Findings review grid — each decoded chart finding rendered on the tooth it belongs to, with correct and wrong verdict buttons" width="1518" height="784" loading="lazy">
+              <figcaption class="bear-caption">Chart-decoder verification: every decoded finding is rendered on its own tooth and graded by hand, so a mis-decode can&rsquo;t reach the viewer silently.</figcaption>
+            </figure>
+            <ul class="proj-facts">
+              <li><b>28 / 28</b> teeth auto-detected at &gt;90% IoU</li>
+              <li><b>Patient-specific</b> 3D meshes from 2D contours</li>
+              <li><b>45</b> automated tests over the pipeline</li>
+            </ul>
+            <div class="stack">
+              <span class="chip">SAM2</span><span class="chip">Python</span>
+              <span class="chip">Three.js</span><span class="chip">DICOM PS3.15</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal">
+          <div class="proj-num">05</div>
+          <div>
+            <h3>Sacred Trinity — Connect Baltimore</h3>
+            <div class="proj-role">Lead Software Engineer &middot; DALI Lab &middot; environmental justice &middot; live</div>
+            <p>
+              An <strong>environmental-justice platform for Baltimore City</strong> I led as
+              lead engineer at the DALI Lab, with the Temple X Schools partnership. It
+              organizes three community stakeholders — faith leaders, research institutions,
+              and K-12 public schools — around <strong>neighborhood-scale climate and
+              pollution data</strong>.
+            </p>
+            <p>
+              Churches and schools host the sensors; residents explore hyperlocal
+              temperature, wind, solar, and precipitation data for their own neighborhood
+              on a <strong>Mapbox GL map</strong> of district polygons and site markers,
+              with per-site time series and multi-station comparison charts.
+            </p>
+            <p>
+              I architected the <strong>PostgreSQL backend behind 10K+ community and
+              environmental data points</strong> with indexing tuned for the map&rsquo;s hot
+              paths, built the React + TypeScript Mapbox interface, and integrated the
+              weather and pollution APIs with a caching layer that
+              <strong>cut load latency ~40%</strong>. Auth is JWT/OAuth2 with rate limiting,
+              audit logging, and access controls aligned to SOC2 readiness.
+            </p>
+          </div>
+          <div class="proj-side">
+            <ul class="proj-facts">
+              <li><b>Lead engineer</b> — architecture, backend, and map UI</li>
+              <li><b>10K+</b> community &amp; environmental data points</li>
+              <li><b>~40%</b> lower load latency via API caching</li>
+              <li><b>Live</b> at <a href="https://sacredtrinity.dalilab.app/" target="_blank" rel="noopener">sacredtrinity.dalilab.app</a></li>
+            </ul>
+            <div class="stack">
+              <span class="chip">React</span><span class="chip">TypeScript</span>
+              <span class="chip">PostgreSQL</span><span class="chip">Mapbox GL JS</span>
+              <span class="chip">OAuth2 / JWT</span><span class="chip">time-series charts</span>
+            </div>
+          </div>
+          <figure class="shot proj-wide">
+            <div class="shot-frame">
+              <div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+              <img src="assets/sacred-trinity/st-map-dashboard.jpg" alt="Connect Baltimore — Mapbox map of Baltimore district polygons and site markers beside Ark Church's live sensor charts" width="1456" height="831" loading="lazy">
+            </div>
+            <figcaption>Live: Ark Church&rsquo;s sensor dashboard — temperature, wind speed, solar radiation, precipitation — beside Baltimore&rsquo;s district map.</figcaption>
+          </figure>
+        </article>
+
+        <article class="proj reveal">
+          <div class="proj-num">06</div>
+          <div>
+            <h3>Deserto — Dartmouth&rsquo;s Outdoors Platform</h3>
+            <div class="proj-role">Lead Software Engineer &middot; DALI Lab &middot; live for the campus</div>
+            <p>
+              &ldquo;Find your adventure&rdquo; for Dartmouth: <strong>358 curated
+              experiences</strong> — trails, water, snow, sports — plus events, eateries,
+              facilities, and a <strong>gear rental system</strong> with carts and
+              reservations. Live at
+              <a href="https://deserto.dartmouth.edu/" target="_blank" rel="noopener">deserto.dartmouth.edu</a>
+              and used by real students.
+            </p>
+            <p>
+              This is the production-infrastructure project. It launched on Render/Dokploy,
+              and I <strong>migrated it to a containerized AWS stack</strong> — EC2, RDS
+              PostgreSQL, S3, Lambda, Docker. I refactored the PostgreSQL/Prisma data layer,
+              normalized the hot paths and added composite indexes, which
+              <strong>cut p95 latency 35%</strong>.
+            </p>
+            <p>
+              I also built the auth: <strong>SSO over OAuth2 with token rotation and scoped
+              permissions</strong>, on a custom layer that let us drop Supabase entirely.
+              Releases go out zero-downtime through GitHub Actions CI/CD with CloudWatch
+              monitoring.
+            </p>
+            
+          </div>
+          <div class="proj-side">
+            <ul class="proj-facts">
+              <li><b>35%</b> lower p95 latency after the data-layer refactor</li>
+              <li><b>358</b> experiences live on campus</li>
+              <li><b>Zero-downtime</b> releases via GitHub Actions + CloudWatch</li>
+              <li><b>Live</b> at <a href="https://deserto.dartmouth.edu/" target="_blank" rel="noopener">deserto.dartmouth.edu</a></li>
+            </ul>
+            <div class="stack">
+              <span class="chip">AWS (EC2 / RDS / S3 / Lambda)</span><span class="chip">Docker</span>
+              <span class="chip">PostgreSQL</span><span class="chip">Prisma</span>
+              <span class="chip">OAuth2 SSO</span><span class="chip">GitHub Actions</span>
+              <span class="chip">CloudWatch</span>
+            </div>
+          </div>
+          <figure class="tv-fig proj-wide">
+              <div class="tv-grid">
+                <img src="assets/deserto/dz-home.jpg" alt="Deserto home — 'Find your adventure' over a Connecticut River landscape with a natural-language search bar" width="1512" height="810" loading="lazy">
+                <img src="assets/deserto/dz-experiences.jpg" alt="Experiences browser — 358 results filtered by trails, water, snow, sports and indoors" width="1512" height="810" loading="lazy">
+                <img src="assets/deserto/dz-rentals.jpg" alt="Rentals — gear carousel with a single kayak reservation card" width="1512" height="810" loading="lazy">
+              </div>
+              <figcaption class="bear-caption">Home &middot; the 358-experience browser &middot; gear rentals. One platform, five content types, one auth layer.</figcaption>
+            </figure>
+        </article>
+
+        <article class="proj reveal">
+          <div class="proj-num">07</div>
+          <div>
+            <h3>Gift of Health — Offline-First EMR</h3>
+            <div class="proj-role">Humanity First &middot; Lead Full-Stack Developer</div>
+            <p>
+              Disaster-relief clinics can&rsquo;t count on connectivity — so their medical
+              records system shouldn&rsquo;t either. I lead development of an
+              <strong>offline-first EMR</strong> that keeps working when the network
+              doesn&rsquo;t, for Humanity First&rsquo;s Gift of Health clinics.
+            </p>
+            <p>
+              Built with HIPAA-aligned encryption, role-based access control, and
+              <strong>multilingual patient and inventory modules</strong> — because the
+              people using it, and the people it serves, don&rsquo;t all share a language.
+            </p>
+          </div>
+          <div class="proj-side">
+            <ul class="proj-facts">
+              <li><b>Offline-first</b> for limited-connectivity field clinics</li>
+              <li><b>HIPAA-aligned</b> encryption + role-based access</li>
+              <li><b>Multilingual</b> patient &amp; inventory modules</li>
+            </ul>
+            <div class="stack">
+              <span class="chip">React</span><span class="chip">Node.js</span><span class="chip">MongoDB</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal">
+          <div class="proj-num">+</div>
+          <div>
+            <h3>Florev — Stroke-Detection Startup</h3>
+            <div class="proj-role">Co-founder &amp; Technical Lead &middot; patent filed</div>
+            <p>
+              Non-invasive ischemic stroke detection combining <strong>Arduino
+              biosensors</strong> with a cloud AI pipeline (Python/FastAPI). Alongside the
+              technical build, I&rsquo;ve navigated IRB preparation and a
+              <strong>patent filing</strong> — shipping research-grade hardware/software
+              means owning the regulatory path too.
+            </p>
+          </div>
+          <div class="proj-side">
+            <ul class="proj-facts">
+              <li><b>Patent filed</b>; IRB preparation in progress</li>
+              <li><b>Edge + cloud:</b> biosensors feeding an AI pipeline</li>
+            </ul>
+            <div class="stack">
+              <span class="chip">Arduino</span><span class="chip">Python</span><span class="chip">FastAPI</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== EXPERIENCE ==================== -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2 class="section-title">Experience</h2>
+        <span class="section-index">02 / 04</span>
+      </div>
+
+      <div class="timeline">
+
+        <div class="t-item reveal">
+          <div class="t-when">Sept 2026</div>
+          <div class="t-marker"></div>
+          <div class="t-body">
+            <h3>Oklahoma City Thunder<span class="badge">incoming</span></h3>
+            <div class="t-role">Software Engineer Intern &middot; NBA franchise, Oklahoma City</div>
+            <p class="t-lede" style="margin-bottom:0">
+              Joining the Thunder&rsquo;s software engineering team this fall — building
+              internal tools for a professional sports organization, on a Dartmouth
+              off-term.
+            </p>
+          </div>
+        </div>
+
+        <div class="t-item reveal">
+          <div class="t-when">June &ndash; Sept 2026</div>
+          <div class="t-marker"></div>
+          <div class="t-body">
+            <h3>Salesforce<span class="badge">hackathon winner</span></h3>
+            <div class="t-role">Software Engineering Intern &middot; Data Engineering (Sales Analytics) &middot; San Francisco</div>
+            <p class="t-lede">
+              The summer&rsquo;s through-line: <strong>making enterprise data legible to AI
+              agents</strong> — a semantic data layer so anyone can ask a business question
+              in plain English and get one governed answer, and an agent workflow layer
+              that turns a dozen tickets into one conversation and one approval.
+            </p>
+            <ul>
+              <li>Shipped a <strong>governed semantic-layer data product to production</strong> (Snowflake Semantic View + MCP server, open OSI standard) — the first on the team&rsquo;s enterprise &ldquo;paved path.&rdquo; Authored and live-validated ~11 products, <strong>every headline number validated to the dollar</strong> against the certified dashboard the business runs on; diagnosed two bugs silently breaking the pipeline along the way</li>
+              <li><strong>Won the company-wide hackathon</strong> (300+ interns, 36 teams) with an Agentforce agent that collapses a new hire&rsquo;s 13+ access requests into one manager-approved flow — <strong>~$900K/yr modeled impact</strong> — with the human-in-the-loop checkpoint designed <em>first</em>: the agent does the busywork, the manager makes the call</li>
+              <li>Authored the <strong>~730-line repo-wide engineering playbook</strong> the team now onboards new hires with, reconciled to what CI actually enforces and anchored on an explicit decision precedence: <strong>CI &gt; config &gt; docs &gt; notes</strong></li>
+              <li>Ran an execution-graded prompt-engineering experiment; the finding: <strong>specificity beats terseness</strong> — an under-specified prompt <em>fails silently</em> (clean SQL, plausible numbers, subtly wrong question)</li>
+              <li>A skip-level director called a piece of this work <strong>&ldquo;the most thorough data review in the team&rsquo;s history&rdquo;</strong> and asked me to help train the team on the new workflow</li>
+            </ul>
+            <blockquote class="pull">
+              &ldquo;AI drops you in as an architect on day one — you can only direct what
+              you can judge.&rdquo;
+              <cite>from the final impact presentation</cite>
+            </blockquote>
+            <div class="principles" aria-label="Working principles">
+              <span>context is everything</span>
+              <span>rigor beats flash</span>
+              <span>documentation compounds</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="t-item reveal">
+          <div class="t-when">June &ndash; Sept 2025</div>
+          <div class="t-marker"></div>
+          <div class="t-body">
+            <h3>DALI Lab, Dartmouth</h3>
+            <div class="t-role">Lead Software Engineer &middot; Production-Scale Rentals &amp; Events Platform</div>
+            <ul>
+              <li>Deployed on Render/Dokploy, then migrated to a containerized <strong>AWS stack</strong> (EC2, RDS/PostgreSQL, S3, Lambda) with Docker</li>
+              <li>Refactored the PostgreSQL/Prisma data layer — normalized hot paths, added composite indexes — <strong>cutting p95 latency 35%</strong></li>
+              <li>Implemented SSO with OAuth2, token rotation, and scoped permissions; built a custom auth layer to remove Supabase</li>
+              <li>Set up CI/CD via GitHub Actions with CloudWatch monitoring for zero-downtime releases</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="t-item reveal">
+          <div class="t-when">Jan &ndash; Mar 2025</div>
+          <div class="t-marker"></div>
+          <div class="t-body">
+            <h3>DALI Lab, Dartmouth</h3>
+            <div class="t-role">Lead Software Engineer &middot; Full-Stack Civic Resource Platform</div>
+            <ul>
+              <li>Architected a PostgreSQL backend supporting <strong>10K+ community and environmental data points</strong> with optimized indexing</li>
+              <li>Built an interactive Mapbox interface in React + TypeScript for real-time air-quality and community-resource visualization</li>
+              <li>Integrated weather/pollution APIs with caching, <strong>reducing load latency ~40%</strong></li>
+              <li>Built secure APIs with JWT/OAuth2 and rate limiting; audit logging and access controls aligned with SOC2 readiness</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SKILLS ==================== -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2 class="section-title">Skills &amp; education</h2>
+        <span class="section-index">03 / 04</span>
+      </div>
+
+      <div class="ruled reveal" style="border-top:none">
+        <div class="edu-line">
+          <b>Dartmouth College</b>
+          <span>B.A. Computer Science, minor in Human-Centered Design &middot; Hanover, NH &middot; June 2027</span>
+          <span class="gpa">GPA 3.79 / 4.0 &middot; AWS Certified Cloud Practitioner</span>
+        </div>
+        <p class="coursework">
+          <b>Coursework:</b> Algorithms &amp; Data Structures &middot; Scalable Systems &middot;
+          Object-Oriented Design &middot; Web Development &middot; Deep Learning &middot;
+          Mobile Development &middot; Generative AI &middot; Linear Algebra &middot; Discrete Math
+        </p>
+        <div class="skills-grid" style="border-bottom:none">
+          <div class="skill-cell">
+            <h3>AI / ML</h3>
+            <ul><li>PyTorch</li><li>scikit-learn</li><li>Pandas</li><li>NumPy</li><li>Hugging Face</li><li>FastAPI</li><li>SAM2</li><li>LLM agents</li></ul>
+          </div>
+          <div class="skill-cell">
+            <h3>Data &amp; Cloud</h3>
+            <ul><li>PostgreSQL</li><li>MongoDB</li><li>MySQL</li><li>Firebase</li><li>Supabase</li><li>AWS</li><li>GCP</li><li>Snowflake</li><li>dbt</li><li>Airflow</li><li>Docker</li><li>GitHub Actions</li></ul>
+          </div>
+          <div class="skill-cell">
+            <h3>Languages</h3>
+            <ul><li>Java</li><li>Python</li><li>C/C++</li><li>TypeScript</li><li>JavaScript</li><li>SQL</li><li>C#</li></ul>
+          </div>
+          <div class="skill-cell">
+            <h3>Product surfaces</h3>
+            <ul><li>React</li><li>Next.js</li><li>Node.js</li><li>Express</li><li>Expo / React Native</li><li>Tailwind</li><li>Three.js / WebGL</li><li>GLSL</li><li>GSAP</li><li>Unity 2D</li><li>Figma</li></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CONTACT ==================== -->
+  <section id="contact" class="contact">
+    <div class="wrap reveal">
+      <span class="kicker">04 / 04 &middot; Get in touch</span>
+      <h2>Let&rsquo;s build something <em>worth using</em>.</h2>
+      <p>
+        I&rsquo;m looking for new-grad software engineering roles — especially teams working
+        on AI systems, data infrastructure, applied machine learning, or backend work where correctness matters.
+      </p>
+      <p class="availability">
+        <b>Graduating June 2027</b> &middot; available for full-time from Summer 2027
+        (Fall 2027 preferred) &middot; based in New York, NY &middot; U.S. citizen, no
+        sponsorship required
+      </p>
+      <div class="contact-links">
+        <a class="btn btn-primary" href="mailto:tasnimchowdhurynyc@gmail.com">tasnimchowdhurynyc@gmail.com</a>
+        <a class="btn btn-ghost" href="Chowdhury_Tasnim_Resume.pdf" target="_blank" rel="noopener">Résumé (PDF)</a>
+        <a class="btn btn-ghost" href="https://github.com/tchowdhury30" target="_blank" rel="noopener">github.com/tchowdhury30</a>
+        <a class="btn btn-ghost" href="https://linkedin.com/in/tasnimchowdhurynyc" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="foot-inner">
+    <span>&copy; <span id="year">2026</span> Tasnim Chowdhury &middot; New York, NY</span>
+    <span>hand-built &middot; no frameworks &middot; <a href="#top">back to top &uarr;</a></span>
+  </div>
+</footer>
+
+<script>
+  // Scroll-reveal
+  (function () {
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      els.forEach(function (el) { el.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(function (el) { io.observe(el); });
+  })();
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Heart montage: don't fetch the 6.4MB mp4 until the section nears the viewport.
+  (function () {
+    var v = document.getElementById('heart-montage');
+    if (!v) return;
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function arm() {
+      if (v.getAttribute('src')) return;
+      if (reduce) { v.removeAttribute('autoplay'); v.setAttribute('controls', ''); }
+      v.src = v.getAttribute('data-src');
+      if (!reduce) { var p = v.play(); if (p && p.catch) p.catch(function () { v.setAttribute('controls', ''); }); }
+    }
+    if (!('IntersectionObserver' in window)) { arm(); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { arm(); io.disconnect(); }
+      });
+    }, { rootMargin: '600px 0px' });
+    io.observe(v);
+  })();
+
+  // ToothViz pipeline SVG: horizontal on desktop, stacked vertically on mobile.
+  (function () {
+    var svg = document.getElementById('tooth-pipe');
+    if (!svg || !window.matchMedia) return;
+    svg.classList.add('pipe-js');
+    var mq = window.matchMedia('(max-width: 600px)');
+    function set() {
+      svg.setAttribute('viewBox', mq.matches ? '0 0 310 828' : '0 0 860 144');
+    }
+    if (mq.addEventListener) { mq.addEventListener('change', set); } else { mq.addListener(set); }
+    set();
+  })();
+
+  /* ---- lightbox: click any project image to see it full size ---- */
+  (function () {
+    var imgs = Array.prototype.slice.call(
+      document.querySelectorAll('.shot img, .phone-row img, .tv-grid img, .tv-fig > img, .heart-gallery img, .sheet-img, .item-tile img')
+    );
+    if (!imgs.length) return;
+
+    var box = document.createElement('div');
+    box.className = 'lightbox';
+    box.setAttribute('role', 'dialog');
+    box.setAttribute('aria-modal', 'true');
+    box.setAttribute('aria-label', 'Image viewer');
+    box.innerHTML =
+      '<button class="lb-close" aria-label="Close image viewer">&times;</button>' +
+      '<figure class="lb-fig"><img alt=""><figcaption></figcaption></figure>';
+    document.body.appendChild(box);
+
+    var lbImg = box.querySelector('img');
+    var lbCap = box.querySelector('figcaption');
+    var lastFocus = null;
+
+    function open(src, alt) {
+      lastFocus = document.activeElement;
+      lbImg.src = src;
+      lbImg.alt = alt || '';
+      lbCap.textContent = alt || '';
+      lbCap.style.display = alt ? '' : 'none';
+      box.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+      box.querySelector('.lb-close').focus();
+    }
+    function close() {
+      box.classList.remove('is-open');
+      document.body.style.overflow = '';
+      lbImg.removeAttribute('src');
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    imgs.forEach(function (img) {
+      img.classList.add('zoomable');
+      img.tabIndex = 0;
+      img.setAttribute('role', 'button');
+      img.addEventListener('click', function () { open(img.currentSrc || img.src, img.alt); });
+      img.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(img.currentSrc || img.src, img.alt); }
+      });
+    });
+
+    box.addEventListener('click', function (e) {
+      if (e.target === box || e.target.classList.contains('lb-close') || e.target.classList.contains('lb-fig')) close();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && box.classList.contains('is-open')) close();
+    });
+  })();
+</script>
+
+</body>
+</html>
