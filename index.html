@@ -261,6 +261,9 @@
   .proj > * { min-width: 0; }
   /* a figure promoted to span the card's full width */
   .proj-wide { grid-column: 2 / -1; margin: 4px 0 0; }
+  .proj-duo { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 22px; align-items: start; }
+  .proj-duo .shot { margin: 0; max-width: none; }
+  @media (max-width: 800px) { .proj-duo { grid-template-columns: minmax(0, 1fr); } .proj-duo .shot:last-child { max-width: 360px; } }
   @media (max-width: 800px) { .proj-wide { grid-column: 2; } }
   @media (max-width: 520px) { .proj-wide { grid-column: 1; } }
   .proj-num {
@@ -1081,20 +1084,22 @@ is_starter boolean <span class="kw">GENERATED</span>   <span class="cm">-- deriv
               <span class="chip">Express / Sequelize</span><span class="chip">OAuth2 / JWT</span>
               <span class="chip">ArcGIS &amp; Socrata open data</span>
             </div>
-            <figure class="shot" style="margin-top:6px">
+          </div>
+          <div class="proj-wide proj-duo">
+            <figure class="shot">
+              <div class="shot-frame">
+                <div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+                <img src="assets/sacred-trinity/st-map-dashboard.jpg" alt="Connect Baltimore — Mapbox map of Baltimore district polygons and site markers beside Ark Church's live sensor charts" width="1456" height="831" loading="lazy">
+              </div>
+              <figcaption>2025, live: Ark Church&rsquo;s sensor dashboard — temperature, wind speed, solar radiation, precipitation — beside Baltimore&rsquo;s district map.</figcaption>
+            </figure>
+            <figure class="shot">
               <div class="shot-frame">
                 <img src="assets/sacred-trinity/st-health-score.jpg" alt="Connect Baltimore — a site's health score card: 50, Okay, with air 37, forest 92, water 24, soil 53 and neighborhood 60, each expandable to its public data sources" width="400" height="560" loading="lazy">
               </div>
               <figcaption>2026: one health score per site, five factors, every input expandable to its dataset and last-updated date.</figcaption>
             </figure>
           </div>
-          <figure class="shot proj-wide">
-            <div class="shot-frame">
-              <div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div>
-              <img src="assets/sacred-trinity/st-map-dashboard.jpg" alt="Connect Baltimore — Mapbox map of Baltimore district polygons and site markers beside Ark Church's live sensor charts" width="1456" height="831" loading="lazy">
-            </div>
-            <figcaption>2025, live: Ark Church&rsquo;s sensor dashboard — temperature, wind speed, solar radiation, precipitation — beside Baltimore&rsquo;s district map.</figcaption>
-          </figure>
         </article>
 
         <article class="proj reveal">
