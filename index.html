@@ -1122,25 +1122,31 @@ is_starter boolean <span class="kw">GENERATED</span>   <span class="cm">-- deriv
             <h3>Gift of Health — Offline-First EMR</h3>
             <div class="proj-role">Humanity First &middot; Lead Full-Stack Developer</div>
             <p>
-              Disaster-relief clinics can&rsquo;t count on connectivity — so their medical
-              records system shouldn&rsquo;t either. I lead development of an
-              <strong>offline-first EMR</strong> that keeps working when the network
-              doesn&rsquo;t, for Humanity First&rsquo;s Gift of Health clinics.
+              Medical-mission clinics can&rsquo;t count on internet, so their records system
+              shouldn&rsquo;t either. I&rsquo;m leading a ground-up rebuild of Humanity First&rsquo;s
+              <strong>offline-first EMR</strong>: one Windows laptop runs the whole stack, and
+              doctors, nurses, and students work on it from their phones and laptops
+              over the clinic&rsquo;s local Wi-Fi or a hotspot.
             </p>
             <p>
-              Built with HIPAA-aligned encryption, role-based access control, and
-              <strong>multilingual patient and inventory modules</strong> — because the
-              people using it, and the people it serves, don&rsquo;t all share a language.
+              The old Streamlit prototype had shared PINs and plaintext JSON files. The new system puts every
+              read and write through <strong>one permission-checked, audited service layer</strong>.
+              Each staff member has their own account. Students can be switched on or off for each trip. Every
+              patient-record view is written to a <strong>tamper-evident, HMAC-chained audit log</strong>
+              that the database itself won&rsquo;t let the app edit. Patient intake, vitals,
+              diagnoses, prescriptions, a doctor queue for each specialty, and photo uploads with
+              metadata stripped all run with no internet connection.
             </p>
           </div>
           <div class="proj-side">
             <ul class="proj-facts">
-              <li><b>Offline-first</b> for limited-connectivity field clinics</li>
-              <li><b>HIPAA-aligned</b> encryption + role-based access</li>
-              <li><b>Multilingual</b> patient &amp; inventory modules</li>
+              <li><b>Offline</b> on a LAN or hotspot, many devices at once</li>
+              <li><b>Role-based access</b> enforced on the server, past trips read-only</li>
+              <li><b>Audit log</b> with an HMAC hash chain and an append-only DB role</li>
+              <li><b>Tested</b> with 270+ unit, integration &amp; browser tests in CI</li>
             </ul>
             <div class="stack">
-              <span class="chip">React</span><span class="chip">Node.js</span><span class="chip">MongoDB</span>
+              <span class="chip">Next.js</span><span class="chip">TypeScript</span><span class="chip">PostgreSQL</span><span class="chip">Prisma</span><span class="chip">Playwright</span>
             </div>
           </div>
         </article>
