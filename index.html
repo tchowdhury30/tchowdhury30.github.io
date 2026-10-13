@@ -11,7 +11,7 @@
 <!-- Link preview (works when the URL is shared, independent of indexing) -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Tasnim Chowdhury — Software Engineer">
-<meta property="og:description" content="Dartmouth CS '27 · incoming basketball analytics intern at the Oklahoma City Thunder · shipped a governed semantic-layer data product to production at Salesforce. Humanitarian tech, language tech, applied AI, and WebGL.">
+<meta property="og:description" content="Dartmouth CS '27 · basketball analytics intern at the Oklahoma City Thunder, technical lead on Connect Baltimore at the DALI Lab · shipped a governed semantic-layer data product to production at Salesforce. Humanitarian tech, language tech, applied AI, and WebGL.">
 <meta property="og:image" content="assets/og-preview.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -570,12 +570,12 @@
       </div>
       <dl class="cred-rail" aria-label="At a glance">
         <div>
-          <dt>Next</dt>
-          <dd><b>OKC Thunder</b> <span>Basketball Analytics Intern &middot; Sept 2026</span></dd>
+          <dt>Now</dt>
+          <dd><b>OKC Thunder</b> <span>Basketball Analytics Intern &middot; since Sept 2026</span></dd>
         </div>
         <div>
-          <dt>Most recently</dt>
-          <dd><b>Salesforce</b> <span>shipped to prod &middot; hackathon winner, 300+ interns</span></dd>
+          <dt>Also now</dt>
+          <dd><b>DALI Lab</b> <span>technical lead on Connect Baltimore &middot; mentoring 2 devs</span></dd>
         </div>
         <div>
           <dt>School</dt>
@@ -801,11 +801,14 @@
               <strong>top-down 2D life sim built in Unity</strong>.
             </p>
             <p>
-              The sim has grown well past dress-up. Bears have <strong>needs, skills and a
-              personality</strong>; you farm crops through real growth stages, cook what you
-              harvest, craft from gathered materials, keep bees, dye clothing, train at
-              sports, and go to school — with a world map, animal vendors, and a content
-              graph that ties every seed to a dish and every material to a recipe.
+              The sim has grown well past dress-up. Bears have <strong>needs, five skills and a
+              personality</strong>; you farm crops through real server-clocked growth stages, chop
+              and cook what you harvest, craft from gathered materials, keep bees, dye and wear
+              clothing across six equipment slots, run a market stall, train at sports and go to
+              school. There are <strong>nine minigames</strong>, six of them with a harder timed
+              event behind a medal, and a <strong>336-question school bank</strong> across four
+              subjects, four years and three difficulty bands that adapts without ever showing a
+              child a score.
             </p>
             <p>
               I own the whole stack for a <strong>confidential European client</strong>: the
@@ -816,23 +819,38 @@
               a <strong>DB-trigger-enforced order state machine</strong> (physical merchandise
               ships on the strength of it, so the UI doesn&rsquo;t get a vote),
               <strong>idempotent starter-bear redemption</strong> (every account plays
-              immediately; redeeming a real code rewrites the same row, and a second,
-              different code is refused), and an <strong>Apple 3.1.1-compliant split</strong>
-              — digital items are coin-priced, physical goods are card checkout only, never
-              IAP currency.
+              immediately; redeeming a real code rewrites the same row, and a second code
+              adopts the shop-built bear as another character rather than replacing it), and an
+              <strong>Apple 3.1.1-compliant split</strong> — digital items are coin-priced,
+              physical goods are card checkout only, never IAP currency. A
+              <strong>reviewer pool</strong> for App Store submission rides on the same
+              partition: a flagged account&rsquo;s physical order can never reach
+              <em>shipped</em>, enforced in the transition trigger rather than in a route.
             </p>
             <div class="codeblock">
               <div class="code-bar"><span>supabase/migrations &middot; character-code namespace</span><b>sql</b></div>
               <pre><span class="cm">-- Real codes match ^[A-Z0-9]{2}-[A-Z0-9]{4}-[A-Z0-9]{4}$;</span>
-<span class="cm">-- starter codes begin with a lowercase 's'. Every path</span>
-<span class="cm">-- uppercases + trims before insert or lookup, so a real code</span>
-<span class="cm">-- cannot be spelled into the starter namespace.</span>
-<span class="kw">CHECK</span> (...)                    <span class="cm">-- DB enforces the partition</span>
+<span class="cm">-- starter codes begin 'starter:', reviewer codes begin 'qa:'.</span>
+<span class="cm">-- Every path uppercases + trims before insert or lookup, and</span>
+<span class="cm">-- toUpperCase() cannot emit a lowercase letter in any locale —</span>
+<span class="cm">-- so a real code cannot be spelled into either reserved space.</span>
+<span class="kw">CHECK</span> (...)                    <span class="cm">-- DB enforces all three arms</span>
 is_starter boolean <span class="kw">GENERATED</span>   <span class="cm">-- derived from the code; can't drift</span>
 <span class="kw">REVOKE EXECUTE</span> ... <span class="kw">FROM</span> anon, authenticated;
 <span class="cm">-- money-moving RPCs are SECURITY DEFINER, service_role only</span></pre>
             </div>
-            <p class="code-caption">The starter namespace is a hard partition, not a convention — enforced in the schema, not in app code.</p>
+            <p class="code-caption">Three code namespaces, partitioned in the schema rather than by convention — the uppercase rule in the app is what makes the partition unspellable, and a CHECK is what makes it true.</p>
+            <p>
+              Correctness is checked by five independent harnesses, because each is blind to
+              something the next one sees: <strong>698 unit tests</strong> on the pure logic,
+              <strong>260 assertions</strong> on what a built scene contains,
+              <strong>404 API tests</strong>, all <strong>69 migrations replayed against an
+              empty Postgres</strong> — and <strong>33 headless play scenarios</strong> that
+              boot the real game, sign in against a live API, walk the bear across the map,
+              press the button a child presses, and photograph every screen. That last one is
+              the only thing that can catch a DTO whose fields have drifted from the JSON the
+              server really sends.
+            </p>
           </div>
           <div class="proj-side">
             <div>
@@ -845,20 +863,22 @@ is_starter boolean <span class="kw">GENERATED</span>   <span class="cm">-- deriv
             </div>
             <ul class="proj-facts">
               <li><b>Physical &rarr; digital:</b> character codes link a real bear to its in-app twin</li>
-              <li><b>Unity 2D</b> life sim: needs, farming, cooking, crafting, beekeeping, training, school</li>
-              <li><b>148 sprites</b> across crops, food, tools, furniture, props and UI</li>
+              <li><b>Unity 2D</b> life sim: needs, farming, cooking, crafting, dyeing, beekeeping, nine minigames, training, school</li>
+              <li><b>Seven scenes</b> — home, cottage interior and five zones, every one built from code and regenerated, never committed</li>
+              <li><b>436 sprites</b>, three bear colourways front/back/profile, 69 migrations</li>
               <li><b>Shipped demo</b> proved the link; now a funded build with a hired designer</li>
             </ul>
             <div class="stack">
-              <span class="chip">Unity 2D</span><span class="chip">Node / Express</span>
+              <span class="chip">Unity 6 / C#</span><span class="chip">Node / Express</span>
               <span class="chip">Supabase</span><span class="chip">PostgreSQL</span><span class="chip">React</span>
             </div>
           </div>
           <figure class="tv-fig proj-wide">
             <img class="sheet-img" src="assets/bear-items/bear-item-sheet.png" alt="Bear item sprites: carrot seed packet, sprout, growing carrot, ripe carrot, roast carrots, hoe, watering can, shears, axe, basket, honey, cotton, planks, charcoal, veggie stew, bread" width="1400" height="350" loading="lazy">
-            <figcaption class="bear-caption">One content chain, end to end: seed &rarr; sprout &rarr; growing &rarr; ripe &rarr; cooked dish — plus the tools and materials that feed crafting. Part of a <b>148-sprite</b> library across crops, food, tools, materials, furniture, props, toys and UI.</figcaption>
+            <figcaption class="bear-caption">One content chain, end to end: seed &rarr; sprout &rarr; growing &rarr; ripe &rarr; cooked dish — plus the tools and materials that feed crafting. Part of a <b>290-sprite</b> library across crops, food, tools, materials, furniture, props, toys and UI, before the bear colourways and terrain tiles.</figcaption>
           </figure>
-        </article>
+        
+</article>
 
         <article class="proj reveal">
           <div class="proj-num">04</div>
@@ -1019,48 +1039,61 @@ is_starter boolean <span class="kw">GENERATED</span>   <span class="cm">-- deriv
           <div class="proj-num">05</div>
           <div>
             <h3>Sacred Trinity — Connect Baltimore</h3>
-            <div class="proj-role">Lead Software Engineer &middot; DALI Lab &middot; environmental justice &middot; live</div>
+            <div class="proj-role">Lead engineer 2025, technical lead &amp; mentor 2026 &middot; DALI Lab &middot; environmental justice &middot; live</div>
             <p>
-              An <strong>environmental-justice platform for Baltimore City</strong> I led as
-              lead engineer at the DALI Lab, with the Temple X Schools partnership. It
-              organizes three community stakeholders — faith leaders, research institutions,
-              and K-12 public schools — around <strong>neighborhood-scale climate and
-              pollution data</strong>.
+              An <strong>environmental-justice platform for Baltimore City</strong> built at
+              the DALI Lab with the Baltimore Social-Environmental Collaborative. It organizes
+              three community stakeholders — faith leaders, research institutions, and K-12
+              public schools — around <strong>neighborhood-scale climate and pollution
+              data</strong>. Each &ldquo;Sacred Trinity&rdquo; is a church, its partner school,
+              and the forest patch between them.
             </p>
             <p>
-              Churches and schools host the sensors; residents explore hyperlocal
-              temperature, wind, solar, and precipitation data for their own neighborhood
-              on a <strong>Mapbox GL map</strong> of district polygons and site markers,
-              with per-site time series and multi-station comparison charts.
+              In 2025 I led the first build: a <strong>PostgreSQL backend behind 10K+
+              community and environmental data points</strong> with indexing tuned for the
+              map&rsquo;s hot paths, a React + TypeScript map of district polygons and site
+              markers with per-site time series, and weather and pollution API integrations
+              with a caching layer that <strong>cut load latency ~40%</strong>, behind
+              JWT/OAuth2 auth with rate limiting and audit logging.
             </p>
             <p>
-              I architected the <strong>PostgreSQL backend behind 10K+ community and
-              environmental data points</strong> with indexing tuned for the map&rsquo;s hot
-              paths, built the React + TypeScript Mapbox interface, and integrated the
-              weather and pollution APIs with a caching layer that
-              <strong>cut load latency ~40%</strong>. Auth is JWT/OAuth2 with rate limiting,
-              audit logging, and access controls aligned to SOC2 readiness.
+              In fall 2026 I came back to lead the next version and mentor two developers.
+              The map now carries the <strong>full 65-station network</strong> — churches,
+              schools, gardens, libraries, universities — on MapLibre with heat, redlining and
+              canopy overlays, and every site gets a <strong>health score built from nine
+              public datasets</strong> (air, tree canopy, sewer overflows, blood lead, crime,
+              311), framed on the city&rsquo;s Children&rsquo;s Outdoor Bill of Rights, with
+              every input traceable to its source and last-updated date. Seeding the station
+              network also caught five production sensors wired to the wrong device.
             </p>
           </div>
           <div class="proj-side">
             <ul class="proj-facts">
-              <li><b>Lead engineer</b> — architecture, backend, and map UI</li>
-              <li><b>10K+</b> community &amp; environmental data points</li>
-              <li><b>~40%</b> lower load latency via API caching</li>
+              <li><b>Lead engineer</b> 2025 &middot; <b>technical lead &amp; mentor</b> 2026</li>
+              <li><b>65 stations</b> on the map, up from 10</li>
+              <li><b>9 public datasets</b> behind one health score per site</li>
+              <li><b>10K+</b> data points &middot; <b>~40%</b> lower load latency</li>
               <li><b>Live</b> at <a href="https://sacredtrinity.dalilab.app/" target="_blank" rel="noopener">sacredtrinity.dalilab.app</a></li>
             </ul>
             <div class="stack">
               <span class="chip">React</span><span class="chip">TypeScript</span>
-              <span class="chip">PostgreSQL</span><span class="chip">Mapbox GL JS</span>
-              <span class="chip">OAuth2 / JWT</span><span class="chip">time-series charts</span>
+              <span class="chip">PostgreSQL / PostGIS</span><span class="chip">MapLibre GL</span>
+              <span class="chip">Express / Sequelize</span><span class="chip">OAuth2 / JWT</span>
+              <span class="chip">ArcGIS &amp; Socrata open data</span>
             </div>
+            <figure class="shot" style="margin-top:6px">
+              <div class="shot-frame">
+                <img src="assets/sacred-trinity/st-health-score.jpg" alt="Connect Baltimore — a site's health score card: 50, Okay, with air 37, forest 92, water 24, soil 53 and neighborhood 60, each expandable to its public data sources" width="400" height="560" loading="lazy">
+              </div>
+              <figcaption>2026: one health score per site, five factors, every input expandable to its dataset and last-updated date.</figcaption>
+            </figure>
           </div>
           <figure class="shot proj-wide">
             <div class="shot-frame">
               <div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i></div>
               <img src="assets/sacred-trinity/st-map-dashboard.jpg" alt="Connect Baltimore — Mapbox map of Baltimore district polygons and site markers beside Ark Church's live sensor charts" width="1456" height="831" loading="lazy">
             </div>
-            <figcaption>Live: Ark Church&rsquo;s sensor dashboard — temperature, wind speed, solar radiation, precipitation — beside Baltimore&rsquo;s district map.</figcaption>
+            <figcaption>2025, live: Ark Church&rsquo;s sensor dashboard — temperature, wind speed, solar radiation, precipitation — beside Baltimore&rsquo;s district map.</figcaption>
           </figure>
         </article>
 
@@ -1190,14 +1223,28 @@ is_starter boolean <span class="kw">GENERATED</span>   <span class="cm">-- deriv
       <div class="timeline">
 
         <div class="t-item reveal">
-          <div class="t-when">Sept 2026</div>
+          <div class="t-when">Sept 2026 &ndash; now</div>
           <div class="t-marker"></div>
           <div class="t-body">
-            <h3>Oklahoma City Thunder<span class="badge">incoming</span></h3>
+            <h3>Oklahoma City Thunder<span class="badge">current</span></h3>
             <div class="t-role">Basketball Analytics Intern &middot; NBA franchise, Oklahoma City</div>
             <p class="t-lede" style="margin-bottom:0">
-              Joining the Thunder&rsquo;s basketball analytics group this fall.
+              With the Thunder&rsquo;s basketball analytics group this fall, on a Dartmouth off-term.
             </p>
+          </div>
+        </div>
+
+        <div class="t-item reveal">
+          <div class="t-when">Sept 2026 &ndash; now</div>
+          <div class="t-marker"></div>
+          <div class="t-body">
+            <h3>DALI Lab, Dartmouth</h3>
+            <div class="t-role">Technical Lead &amp; Mentor &middot; Connect Baltimore (Sacred Trinity)</div>
+            <ul>
+              <li>Back on Connect Baltimore for its fall build: set up the shared base the team branches from, run the partner meetings with the Baltimore Social-Environmental Collaborative, and mentor two developers through their first production PRs</li>
+              <li>Grew the map from 10 sensor sites to the <strong>full 65-station network</strong>, with a seeding pipeline that caught five production sensors wired to the wrong station</li>
+              <li>Built a per-site <strong>health score from nine public datasets</strong> (air, canopy, sewer overflows, lead, crime, 311), framed on Baltimore&rsquo;s Children&rsquo;s Outdoor Bill of Rights, every number traceable to its source and date</li>
+            </ul>
           </div>
         </div>
 
